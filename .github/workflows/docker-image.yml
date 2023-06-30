@@ -20,4 +20,4 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
     - uses: actions/checkout@v3
     - name: Build & Push the Docker image
-      run:  docker build . --file Dockerfile --tag evernotetelegrambot:latest & docker push icevirm1/evernotetelegrambot:latest:latest
+      run:  docker build . --file Dockerfile --tag evernotetelegrambot:latest
