@@ -4,7 +4,7 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 from evernote.api.client import EvernoteClient
 from evernote.edam.type.ttypes import Note
 
-# Ваш токен Telegram-бота
+# Ваш токен Telegram-бота test
 TELEGRAM_TOKEN = 'YOUR_TELEGRAM_TOKEN'
 
 # Ваши данные для доступа к Evernote API
