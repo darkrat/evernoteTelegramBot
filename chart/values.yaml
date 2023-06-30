@@ -1,0 +1,12 @@
+image: your-docker-image
+tag: latest
+
+telegramBot:
+  token: your_telegram_token
+
+evernote:
+  token: your_evernote_token
+  sandbox: false
+
+labels:
+  app.kubernetes.io/name: telegram-bot

@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "telegram-bot.fullname" . }}
+  labels:
+    {{- include "telegram-bot.labels" . | nindent 4 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: telegram-bot
+  template:
+    metadata:
+      labels:
+        app: telegram-bot
+    spec:
+      containers:
+        - name: telegram-bot
+          image: {{ .Values.image }}:{{ .Values.tag }}
+          imagePullPolicy: Always
+          envFrom:
+            - secretRef:
+                name: telegram-bot-secret  # Указываем имя секрета
+          ports:
+            - containerPort: 80
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "telegram-bot.fullname" . }}
+  labels:
+    {{- include "telegram-bot.labels" . | nindent 4 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "telegram-bot.labels" . | nindent 8 }}
+  template:
+    metadata:
+      labels:
+        {{- include "telegram-bot.labels" . | nindent 12 }}
+    spec:
+      containers:
+        - name: telegram-bot
+          image: {{ .Values.image }}:{{ .Values.tag }}
+          imagePullPolicy: Always
+          envFrom:
+            - secretRef:
+                name: telegram-bot-secret
+          ports:
+            - containerPort: 80
