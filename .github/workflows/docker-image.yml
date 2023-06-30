@@ -13,6 +13,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Login to Docker Hub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
     - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag evernotetelegrambot:$(date +%s)
+    - name: Build & Push the Docker image
+      run:  docker build . --file Dockerfile --tag evernotetelegrambot:$(date +%s) & docker push your-username/evernotetelegrambot:latest:$(date +%s)
